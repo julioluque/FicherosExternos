@@ -27,7 +27,9 @@ class LeerFichero {
 			while(c != -1) {
 				
 				c = entrada.read();
-				System.out.println(c);
+				
+				char letra = (char) c;
+				System.out.print(letra);
 			}
 			
 		} catch (IOException e) {
