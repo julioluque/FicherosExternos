@@ -3,6 +3,7 @@ package lectura;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class AccesoFicheroLectura {
 
@@ -10,8 +11,26 @@ public class AccesoFicheroLectura {
 
 		LeerFichero fichero = new LeerFichero();
 		
-		fichero.leerPorCaracter();
-//		fichero.leerPorBuffer();
+		Scanner opciones= new Scanner(System.in);
+		System.out.println("Para leer el fichero, elije una opcion: \n1 - Caracter a caracter\n2 - Linea a Linea usando buffer");
+		
+		int seleccionar = opciones.nextInt(); 
+		
+		switch(seleccionar) {
+			case 1 : 
+				fichero.leerPorCaracter();
+				break;
+				
+			case 2:
+				fichero.leerPorBuffer();
+				break;
+			
+			default:
+				System.out.println("La opcion ingresada no es correcta");
+			
+		}
+		
+		opciones.close();
 		
 	}
 
