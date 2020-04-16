@@ -23,7 +23,7 @@ class EscribirFichero {
 	public void escribir() {
 		try {
 			
-			FileWriter salida = new FileWriter("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Ejemplo Stream Nuevo.txt");
+			FileWriter salida = new FileWriter("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Ejemplo Stream Nuevo.txt", true);
 
 			for (int i = 0; i<frase.length(); i++) {
 				
