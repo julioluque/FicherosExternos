@@ -1,7 +1,9 @@
 package escritura;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class AccessoFicheroEscritura {
 
@@ -9,7 +11,8 @@ public class AccessoFicheroEscritura {
 		// TODO Auto-generated method stub
 
 		EscribirFichero fichero2 = new EscribirFichero();
-		fichero2.escribir();
+//		fichero2.escribirPorCaracter();
+		fichero2.escribirPorBuffer();
 
 	}
 
@@ -17,9 +20,9 @@ public class AccessoFicheroEscritura {
 
 class EscribirFichero {
 
-	String frase = "Prueba de escritura nuevo .... 1234567890";
+	String frase = "Prueba de escritura nuevo .... 1234567890 ... ";
 
-	public void escribir() {
+	public void escribirPorCaracter() {
 		try {
 
 			FileWriter salida = new FileWriter("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Ejemplo Stream Nuevo.txt", true);
@@ -41,4 +44,30 @@ class EscribirFichero {
 		}
 
 	}
+	
+	public void escribirPorBuffer() {
+		try {
+
+			FileWriter salida = new FileWriter("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Ejemplo Stream Nuevo.txt");
+			BufferedWriter buffer = new BufferedWriter(salida);
+			
+			for (int i = 0; i < 20; i++) {
+				buffer.write(i + frase);
+				buffer.newLine();
+				buffer.flush();
+			}
+			
+			
+			salida.close();
+
+		} catch (IOException e) {
+
+			System.out.println("No se pudo crear el nuevo fichero");
+			e.printStackTrace();
+
+		}
+
+	}
+
+	
 }
