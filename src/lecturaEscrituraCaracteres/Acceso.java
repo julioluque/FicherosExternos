@@ -1,4 +1,4 @@
-package lecturaEscritura;
+package lecturaEscrituraCaracteres;
 
 import java.util.Scanner;
 
@@ -42,7 +42,6 @@ public class Acceso {
 			System.out.println("Enviando: " + texto);
 			escribirFichero.escribirPorBuffer(texto);
 			teclado2.close();
-
 			break;
 
 		default:
