@@ -9,7 +9,9 @@ public class LecturaEscritura {
 	public static void main (String [] args) {
 		
 		System.out.println("\n***Start!");
-				
+		
+		int datosEntrada[] = new int [409210];
+		
 		int i = 0;
 		
 		try {
@@ -21,12 +23,16 @@ public class LecturaEscritura {
 			while(!finalAr) {
 				int byteEntrada = archivoLectura.read();
 				
-				if (byteEntrada == -1) {
-		
+				if (byteEntrada != -1) {
+					
+					datosEntrada[i] = byteEntrada;
+					
+				} else {
+					
 					finalAr = true;
 				}
 
-				System.out.println(byteEntrada);
+				System.out.println(datosEntrada[i]);
 				
 				i++;
 			}
