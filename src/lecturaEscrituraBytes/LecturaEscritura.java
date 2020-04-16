@@ -1,6 +1,7 @@
 package lecturaEscrituraBytes;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -40,7 +41,31 @@ public class LecturaEscritura {
 			archivoLectura.close();
 			System.out.println("\n***Done! -> " + i + " bytes");
 		} catch (IOException e) {
-			System.out.println("\n***Fail!");
+			System.out.println("\n***Error en la lectura!");
+		}
+		
+		creaFichero(datosEntrada);
+		
+	}
+	
+	static void creaFichero(int datosNuevoFichero[]) {
+		
+		try {
+			
+			FileOutputStream ficheroNuevo = new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Avion 1 - Creado por java.jpg");
+			
+			for(int i = 0; i < datosNuevoFichero.length; i++) {
+				
+				ficheroNuevo.write(datosNuevoFichero[i]);
+				
+			}
+			
+			ficheroNuevo.close();
+			
+		} catch (IOException e) {
+			
+			System.out.println("\n***Error en la escritura!");
+			
 		}
 		
 	}
