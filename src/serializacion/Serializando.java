@@ -19,14 +19,14 @@ public class Serializando {
 		try {
 			// Creamos nuevo archivo en la ruta especificada
 			ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
-					new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt"));
+					new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados Serializado.txt"));
 
 			escribiendoFichero.writeObject(personal);
 			escribiendoFichero.close();
 
 			// Recuperamos el archivo anterior de la ruta especificada
 			ObjectInputStream recuperandoFichero = new ObjectInputStream(
-					new FileInputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt"));
+					new FileInputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados Serializado.txt"));
 
 			Empleado[] personalRecuperado = (Empleado[]) recuperandoFichero.readObject();
 			recuperandoFichero.close();
@@ -44,7 +44,6 @@ public class Serializando {
 
 }
 
-@SuppressWarnings("serial")
 class Empleado implements Serializable {
 
 	private String nombre;
@@ -97,7 +96,6 @@ class Empleado implements Serializable {
 
 }
 
-@SuppressWarnings("serial")
 class Administrador extends Empleado {
 
 	private double incentivo;
@@ -117,8 +115,8 @@ class Administrador extends Empleado {
 	}
 
 	public double subirSueldo() {
-		double sueldoBase = super.getSueldo();
-		return sueldoBase + incentivo;
+		double sueldoBasico = super.getSueldo();
+		return sueldoBasico + incentivo;
 	}
 
 }
