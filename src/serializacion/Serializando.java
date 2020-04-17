@@ -18,11 +18,11 @@ public class Serializando {
 
 		try {
 			// Creamos nuevo archivo en la ruta especificada
-			ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
-					new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados Serializado.txt"));
-
-			escribiendoFichero.writeObject(personal);
-			escribiendoFichero.close();
+//			ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
+//					new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados Serializado.txt"));
+//
+//			escribiendoFichero.writeObject(personal);
+//			escribiendoFichero.close();
 
 			// Recuperamos el archivo anterior de la ruta especificada
 			ObjectInputStream recuperandoFichero = new ObjectInputStream(
@@ -47,7 +47,7 @@ public class Serializando {
 class Empleado implements Serializable {
 
 	private String nombre;
-	private int sueldo;
+	private int sueldos;
 	private Date fechaContrato;
 
 	public String getNombre() {
@@ -58,12 +58,12 @@ class Empleado implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public int getSueldo() {
-		return sueldo;
+	public int getSueldos() {
+		return sueldos;
 	}
 
-	public void setSueldo(int sueldo) {
-		this.sueldo = sueldo;
+	public void setSueldos(int sueldos) {
+		this.sueldos = sueldos;
 	}
 
 	public Date getFechaContrato() {
@@ -76,13 +76,13 @@ class Empleado implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Empleado [nombre=" + nombre + ", sueldo=" + sueldo + ", fechaContrato=" + fechaContrato + "]";
+		return "Empleado [nombre=" + nombre + ", sueldos=" + sueldos + ", fechaContrato=" + fechaContrato + "]";
 	}
 
 	public Empleado(String n, int s, int anio, int mes, int dia) {
 
 		nombre = n;
-		sueldo = s;
+		sueldos = s;
 		GregorianCalendar calendario = new GregorianCalendar(anio, mes - 1, dia);
 		fechaContrato = calendario.getTime();
 
@@ -90,8 +90,8 @@ class Empleado implements Serializable {
 
 	public void subirSueldo(double porcentaje) {
 
-		double aumento = sueldo * porcentaje / 100;
-		sueldo += aumento;
+		double aumento = sueldos * porcentaje / 100;
+		sueldos += aumento;
 	}
 
 }
@@ -115,8 +115,8 @@ class Administrador extends Empleado {
 	}
 
 	public double subirSueldo() {
-		double sueldoBasico = super.getSueldo();
-		return sueldoBasico + incentivo;
+		double sueldoBase = super.getSueldos();
+		return sueldoBase + incentivo;
 	}
 
 }
