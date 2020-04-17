@@ -46,8 +46,13 @@ public class Serializando {
 
 class Empleado implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String nombre;
-	private int sueldos;
+	private int sueldo;
 	private Date fechaContrato;
 
 	public String getNombre() {
@@ -58,12 +63,12 @@ class Empleado implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public int getSueldos() {
-		return sueldos;
+	public int getSueldo() {
+		return sueldo;
 	}
 
-	public void setSueldos(int sueldos) {
-		this.sueldos = sueldos;
+	public void setSueldo(int sueldo) {
+		this.sueldo = sueldo;
 	}
 
 	public Date getFechaContrato() {
@@ -76,13 +81,13 @@ class Empleado implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Empleado [nombre=" + nombre + ", sueldos=" + sueldos + ", fechaContrato=" + fechaContrato + "]";
+		return "Empleado [nombre=" + nombre + ", sueldo=" + sueldo + ", fechaContrato=" + fechaContrato + "]";
 	}
 
 	public Empleado(String n, int s, int anio, int mes, int dia) {
 
 		nombre = n;
-		sueldos = s;
+		sueldo = s;
 		GregorianCalendar calendario = new GregorianCalendar(anio, mes - 1, dia);
 		fechaContrato = calendario.getTime();
 
@@ -90,14 +95,19 @@ class Empleado implements Serializable {
 
 	public void subirSueldo(double porcentaje) {
 
-		double aumento = sueldos * porcentaje / 100;
-		sueldos += aumento;
+		double aumento = sueldo * porcentaje / 100;
+		sueldo += aumento;
 	}
 
 }
 
 class Administrador extends Empleado {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private double incentivo;
 
 	public void setIncentivo(double b) {
@@ -115,7 +125,7 @@ class Administrador extends Empleado {
 	}
 
 	public double subirSueldo() {
-		double sueldoBase = super.getSueldos();
+		double sueldoBase = super.getSueldo();
 		return sueldoBase + incentivo;
 	}
 
