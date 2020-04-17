@@ -15,11 +15,37 @@ public class Serializando {
 		personal[0] = jefe;
 		personal[1] = new Empleado("Ana", 25000, 2008, 04, 13);
 		personal[2] = new Empleado("Martin", 75000, 2005, 10, 23);
+		
+		try {
+			// Creamos nuevo archivo en la ruta especificada
+			FileOutputStream ficheroSalida = new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt");
+			ObjectOutputStream escribiendoFichero = new ObjectOutputStream(ficheroSalida);
+			
+			escribiendoFichero.writeObject(personal);
+			escribiendoFichero.close();
+			
+			
+			// Recuperamos el archivo anterior de la ruta especificada
+			FileInputStream ficheroEntrada = new FileInputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt");
+			ObjectInputStream recuperandoFichero = new ObjectInputStream(ficheroEntrada);
+
+			Empleado[] personalRecuperado = (Empleado[]) recuperandoFichero.readObject(); 
+			recuperandoFichero.close();
+			
+			// Imprimimos por consola
+			for(Empleado e : personalRecuperado) {
+				System.out.println(e);
+			}
+			
+		}catch (Exception e) {
+			
+		}
+		
 	}
 
 }
 
-class Empleado {
+class Empleado implements Serializable{
 
 	private String nombre;
 	private int sueldo;
@@ -83,7 +109,7 @@ class Administrador extends Empleado {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Administrador [incentivo=" + incentivo + "]";
+		return super.toString() + "[incentivo=" + incentivo + "]";
 	}
 
 
