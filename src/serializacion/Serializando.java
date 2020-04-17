@@ -10,42 +10,42 @@ public class Serializando {
 		Administrador jefe = new Administrador("Juan", 78000, 2003, 12, 25);
 		jefe.setIncentivo(5000);
 
-		Empleado[] personal = new Empleado[3];  // vamos a serializar este objeto
-		
+		Empleado[] personal = new Empleado[3]; // vamos a serializar este objeto
+
 		personal[0] = jefe;
 		personal[1] = new Empleado("Ana", 25000, 2008, 04, 13);
 		personal[2] = new Empleado("Martin", 75000, 2005, 10, 23);
-		
+
 		try {
 			// Creamos nuevo archivo en la ruta especificada
-			FileOutputStream ficheroSalida = new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt");
-			ObjectOutputStream escribiendoFichero = new ObjectOutputStream(ficheroSalida);
-			
+			ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
+					new FileOutputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt"));
+
 			escribiendoFichero.writeObject(personal);
 			escribiendoFichero.close();
-			
-			
-			// Recuperamos el archivo anterior de la ruta especificada
-			FileInputStream ficheroEntrada = new FileInputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt");
-			ObjectInputStream recuperandoFichero = new ObjectInputStream(ficheroEntrada);
 
-			Empleado[] personalRecuperado = (Empleado[]) recuperandoFichero.readObject(); 
+			// Recuperamos el archivo anterior de la ruta especificada
+			ObjectInputStream recuperandoFichero = new ObjectInputStream(
+					new FileInputStream("C:/desa/apps/was/RECURSOS EXTERNOS/Streams/Empleados.txt"));
+
+			Empleado[] personalRecuperado = (Empleado[]) recuperandoFichero.readObject();
 			recuperandoFichero.close();
-			
+
 			// Imprimimos por consola
-			for(Empleado e : personalRecuperado) {
+			for (Empleado e : personalRecuperado) {
 				System.out.println(e);
 			}
-			
-		}catch (Exception e) {
-			
+
+		} catch (Exception e) {
+
 		}
-		
+
 	}
 
 }
 
-class Empleado implements Serializable{
+@SuppressWarnings("serial")
+class Empleado implements Serializable {
 
 	private String nombre;
 	private int sueldo;
@@ -97,22 +97,19 @@ class Empleado implements Serializable{
 
 }
 
+@SuppressWarnings("serial")
 class Administrador extends Empleado {
 
 	private double incentivo;
-
 
 	public void setIncentivo(double b) {
 		incentivo = b;
 	}
 
-	
 	@Override
 	public String toString() {
 		return super.toString() + "[incentivo=" + incentivo + "]";
 	}
-
-
 
 	public Administrador(String n, int s, int anio, int mes, int dia) {
 		super(n, s, anio, mes, dia);
