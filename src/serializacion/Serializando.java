@@ -46,10 +46,11 @@ public class Serializando {
 
 class Empleado implements Serializable {
 
+
 	/**
-	 * 
+	 * Version generada automaticamente por Java.
 	 */
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = -3466854769955650436L;
 	
 	private String nombre;
 	private int sueldo;
@@ -104,9 +105,9 @@ class Empleado implements Serializable {
 class Administrador extends Empleado {
 
 	/**
-	 * 
+	 * Version generada automaticamente por Java.
 	 */
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 895542952968053475L;
 	
 	private double incentivo;
 
