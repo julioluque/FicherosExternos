@@ -1,4 +1,4 @@
-package lecturaEscrituraCaracteres;
+package lectura_escritura_caracteres;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

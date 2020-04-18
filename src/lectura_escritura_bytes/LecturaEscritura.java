@@ -1,4 +1,4 @@
-package lecturaEscrituraBytes;
+package lectura_escritura_bytes;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
