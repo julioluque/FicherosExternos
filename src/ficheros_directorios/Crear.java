@@ -2,28 +2,28 @@ package ficheros_directorios;
 
 import java.io.*;
 
-public class Creando {
+public class Crear {
 	public static void main(String[] args) {
 
 		String rutaNuevoDirectorio = "C:" + File.separator + "desa" + File.separator + "apps" + File.separator + "was"
 				+ File.separator + "RECURSOS EXTERNOS" + File.separator + "Ficheros y Directorios" + File.separator
-				+ "Directorio Creado por Java.java";
+				+ "Directorio Creado por Java";
 
 		String rutaNuevoArchivo = "C:" + File.separator + "desa" + File.separator + "apps" + File.separator + "was"
 				+ File.separator + "RECURSOS EXTERNOS" + File.separator + "Ficheros y Directorios" + File.separator
-				+ "Directorio Creado por Java.java" + File.separator + "Archivo Creado por Java.txt";
+				+ "Directorio Creado por Java" + File.separator + "Archivo Creado por Java.txt";
 
-		File ruta1 = new File(rutaNuevoDirectorio);
-		ruta1.mkdir();
+		File rutaDirectorio = new File(rutaNuevoDirectorio);
+		rutaDirectorio.mkdir();
 
-		File ruta2 = new File(rutaNuevoArchivo);
+		File rutaArchivo = new File(rutaNuevoArchivo);
 		try {
-			ruta2.createNewFile();
+			rutaArchivo.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		String archivoDestino = ruta2.getAbsolutePath();
+		String archivoDestino = rutaArchivo.getAbsolutePath();
 
 		Escribiendo accede_es = new Escribiendo();
 		accede_es.escribir(archivoDestino);
@@ -43,9 +43,9 @@ class Escribiendo {
 			for (int i = 0; i < frase.length(); i++) {
 				escritura.write(frase.charAt(i));
 			}
-			
+
 			escritura.close();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
