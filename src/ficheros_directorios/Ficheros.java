@@ -5,18 +5,32 @@ import java.io.*;
 public class Ficheros {
 	public static void main(String[] args) {
 		
-		String rutaProyecto = "C:/desa/apps/was/FicherosExternos";
-		String rutaExternos = "C:/desa/apps/was/RECURSOS EXTERNOS/Ficheros y Directorios";
+		String ruta1 = "C:/desa/apps/was/FicherosExternos";
+		String ruta2 = "C:/desa/apps/was/RECURSOS EXTERNOS/Ficheros y Directorios";
 		
-		File ruta = new File(rutaExternos);
+		File rutaExterna = new File(ruta2);
 		
-		String [] listaDeArchivos = ruta.list();
+		System.out.println("Existe? " + rutaExterna.exists());
+		System.out.println("Archivos de la carpeta: " + rutaExterna.getAbsolutePath());
 
-		System.out.println("Existe? " + ruta.exists());
-		System.out.println("Archivos de la carpeta: " + ruta.getAbsolutePath());
+		String [] listaDeArchivos = rutaExterna.list();
 
-		for (String s : listaDeArchivos) {
-			System.out.println("\t" + s);
+		for (String archivo : listaDeArchivos) {
+			System.out.println("\t- " + archivo);
+			
+			File rutaInterna = new File(rutaExterna.getAbsoluteFile(),archivo);
+			
+			if (rutaInterna.isDirectory()) {
+				String [] listaDeSubArchivos = rutaInterna.list();
+				
+				for (String subArchivo : listaDeSubArchivos) {
+					System.out.println("\t  - " + subArchivo);
+					
+				}
+				
+				
+			}
+			
 		}
 
 	}
